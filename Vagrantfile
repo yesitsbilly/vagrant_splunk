@@ -9,13 +9,6 @@ Vagrant.configure("2") do |config|
       config.vm.provision "shell", path: "~/splunk_up.sh"
   end
 
-  config.vm.define "ansible_master" do |ansible_master|
-    ansible_master.vm.box = "centos/8"
-      config.vm.network "private_network", ip: "10.0.0.200"
-      config.vm.network :forwarded_port, guest: 22, host: 2223
-      config.vm.host_name = 'ansiblemaster'
-  end
-
  config.vm.define "client01" do |client01|
     client01.vm.box = "centos/8"
       config.vm.network "private_network", ip: "10.0.0.201"
